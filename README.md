@@ -18,11 +18,11 @@ This folder contains the JSON definitions of all key components of the demo inde
 
 ## search-explorer-samples
 
-This folder contains sample queries that you can run against the demo-index.
+This folder contains sample queries that you can run against the demo index.
 
 ## rest-samples
 
-This folder contains a Postman collection with sample calls to do various operations via the Search Service REST API.
+This folder contains a Postman collection with sample calls to do various operations via the Search Service REST API against the demo index.
 
 ## azure-function
 
