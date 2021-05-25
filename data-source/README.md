@@ -1,4 +1,6 @@
-# Sample PDF files to build the demo index in the Search Service.
+# What's in this folder?
+
+This folder contains the sample PDF files that are used in the course to build the demo index in the Search Service.
 
 ## Data provided by Discogs:
 
