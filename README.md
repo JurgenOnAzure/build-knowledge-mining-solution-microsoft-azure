@@ -10,15 +10,15 @@ I hope you enjoyed the course. If you have any questions, please don't hesitate 
 
 ## data-source
 
-This folder contains the sample PDF files that are used in the course to build the demo-index in the Search Service.
+This folder contains the sample PDF files that are used in the course to build the demo index in the Search Service.
 
 ## json
 
-This folder contains the JSON definitions of all key components of the demo-index in the course (index, indexer, ...).
+This folder contains the JSON definitions of all key components of the demo index in the course (index, indexer, ...).
 
 ## search-explorer-samples
 
-This folder contains sample queries that you can run against the demo-index.
+This folder contains sample queries that you can run against the demo index.
 
 ## rest-samples
 
