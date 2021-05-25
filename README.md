@@ -14,11 +14,11 @@ This folder contains the sample PDF files that are used in the course to build t
 
 ## json
 
-This folder contains the JSON definitions of all key components of the demo index in the course (index, indexer, ...).
+This folder contains the JSON definitions of all key components of the demo index in the course.
 
 ## search-explorer-samples
 
-This folder contains sample queries that you can run against the demo index.
+This folder contains sample queries that you can run against the demo-index.
 
 ## rest-samples
 
