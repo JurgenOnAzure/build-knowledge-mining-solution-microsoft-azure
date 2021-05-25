@@ -1,0 +1,72 @@
+{
+  "@odata.context": "https://TODO.search.windows.net/$metadata#indexers/$entity",
+  "@odata.etag": "\"0x8D9145D3BBB9235\"",
+  "name": "artists-indexer",
+  "description": "",
+  "dataSourceName": "artists",
+  "skillsetName": "artists-skillset",
+  "targetIndexName": "artists-index",
+  "disabled": null,
+  "schedule": null,
+  "parameters": {
+    "batchSize": null,
+    "maxFailedItems": 0,
+    "maxFailedItemsPerBatch": 0,
+    "base64EncodeKeys": null,
+    "configuration": {
+      "dataToExtract": "contentAndMetadata",
+      "parsingMode": "default",
+      "imageAction": "generateNormalizedImages"
+    }
+  },
+  "fieldMappings": [
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "metadata_storage_path",
+      "mappingFunction": {
+        "name": "base64Encode",
+        "parameters": null
+      }
+    }
+  ],
+  "outputFieldMappings": [
+    {
+      "sourceFieldName": "/document/merged_content/people",
+      "targetFieldName": "people"
+    },
+    {
+      "sourceFieldName": "/document/merged_content/locations",
+      "targetFieldName": "locations"
+    },
+    {
+      "sourceFieldName": "/document/merged_content/keyphrases",
+      "targetFieldName": "keyphrases"
+    },
+    {
+      "sourceFieldName": "/document/merged_content",
+      "targetFieldName": "merged_content"
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/text",
+      "targetFieldName": "text"
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/layoutText",
+      "targetFieldName": "layoutText"
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/imageTags/*/name",
+      "targetFieldName": "imageTags"
+    },
+    {
+      "sourceFieldName": "/document/normalized_images/*/imageCaption",
+      "targetFieldName": "imageCaption"
+    },
+    {
+      "sourceFieldName": "/document/merged_content/func_text_length",
+      "targetFieldName": "func_text_length"
+    }
+  ],
+  "cache": null,
+  "encryptionKey": null
+}

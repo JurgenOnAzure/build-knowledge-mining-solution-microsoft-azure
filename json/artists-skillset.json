@@ -1,0 +1,271 @@
+{
+  "@odata.context": "https://ai-engineer-search.search.windows.net/$metadata#skillsets/$entity",
+  "@odata.etag": "\"0x8D9145D3BC04E00\"",
+  "name": "artists-skillset",
+  "description": "Skillset created from the portal. skillsetName: artists-skillset; contentField: merged_content; enrichmentGranularity: document; knowledgeStoreStorageAccount: ;",
+  "skills": [
+    {
+      "@odata.type": "#Microsoft.Skills.Text.EntityRecognitionSkill",
+      "name": "#1",
+      "description": null,
+      "context": "/document/merged_content",
+      "categories": [
+        "Person",
+        "Quantity",
+        "Organization",
+        "URL",
+        "Email",
+        "Location",
+        "DateTime"
+      ],
+      "defaultLanguageCode": "en",
+      "minimumPrecision": null,
+      "includeTypelessEntities": null,
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/merged_content"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "persons",
+          "targetName": "people"
+        },
+        {
+          "name": "locations",
+          "targetName": "locations"
+        },
+        {
+          "name": "entities",
+          "targetName": "entities"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.KeyPhraseExtractionSkill",
+      "name": "#2",
+      "description": null,
+      "context": "/document/merged_content",
+      "defaultLanguageCode": "en",
+      "maxKeyPhraseCount": null,
+      "modelVersion": null,
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/merged_content"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "keyPhrases",
+          "targetName": "keyphrases"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.MergeSkill",
+      "name": "#3",
+      "description": null,
+      "context": "/document",
+      "insertPreTag": " ",
+      "insertPostTag": " ",
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/content"
+        },
+        {
+          "name": "itemsToInsert",
+          "source": "/document/normalized_images/*/text"
+        },
+        {
+          "name": "offsets",
+          "source": "/document/normalized_images/*/contentOffset"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "mergedText",
+          "targetName": "merged_content"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Vision.OcrSkill",
+      "name": "#4",
+      "description": null,
+      "context": "/document/normalized_images/*",
+      "textExtractionAlgorithm": null,
+      "lineEnding": "Space",
+      "defaultLanguageCode": "en",
+      "detectOrientation": true,
+      "inputs": [
+        {
+          "name": "image",
+          "source": "/document/normalized_images/*"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "text",
+          "targetName": "text"
+        },
+        {
+          "name": "layoutText",
+          "targetName": "layoutText"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Vision.ImageAnalysisSkill",
+      "name": "#5",
+      "description": null,
+      "context": "/document/normalized_images/*",
+      "defaultLanguageCode": "en",
+      "visualFeatures": [
+        "tags",
+        "description"
+      ],
+      "details": [],
+      "inputs": [
+        {
+          "name": "image",
+          "source": "/document/normalized_images/*"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "tags",
+          "targetName": "imageTags"
+        },
+        {
+          "name": "description",
+          "targetName": "imageCaption"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Custom.WebApiSkill",
+      "name": "#6",
+      "description": "Our demo azure function skill",
+      "context": "/document/merged_content",
+      "uri": "TODO",
+      "httpMethod": "POST",
+      "timeout": "PT30S",
+      "batchSize": 1000,
+      "degreeOfParallelism": null,
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/merged_content"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "textLength",
+          "targetName": "func_text_length"
+        }
+      ],
+      "httpHeaders": {}
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Util.ShaperSkill",
+      "name": "define-projection",
+      "description": "Prepare projection fields",
+      "context": "/document",
+      "inputs": [
+        {
+          "name": "file_id",
+          "source": "/document/metadata_storage_path"
+        },
+        {
+          "name": "file_name",
+          "source": "/document/metadata_storage_name"
+        },
+        {
+          "name": "key_phrases",
+          "sourceContext": "/document/merged_content/keyphrases/*",
+          "inputs": [
+            {
+              "name": "phrase",
+              "source": "/document/merged_content/keyphrases/*"
+            }
+          ]
+        },
+        {
+          "name": "locations",
+          "sourceContext": "/document/merged_content/locations/*",
+          "inputs": [
+            {
+              "name": "location",
+              "source": "/document/merged_content/locations/*"
+            }
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "name": "output",
+          "targetName": "knowledge_projection"
+        }
+      ]
+    }
+  ],
+  "cognitiveServices": {
+    "@odata.type": "#Microsoft.Azure.Search.CognitiveServicesByKey",
+    "description": "TODO",
+    "key": "TODO"
+  },
+  "knowledgeStore": {
+    "storageConnectionString": "DefaultEndpointsProtocol=https;AccountName=TODO;AccountKey=TODO;EndpointSuffix=core.windows.net",
+    "projections": [
+      {
+        "tables": [],
+        "objects": [
+          {
+            "storageContainer": "artists-knowledge",
+            "referenceKeyName": null,
+            "generatedKeyName": "artists-knowledgeKey",
+            "source": "/document/knowledge_projection",
+            "sourceContext": null,
+            "inputs": []
+          }
+        ],
+        "files": []
+      },
+      {
+        "tables": [],
+        "objects": [],
+        "files": [
+          {
+            "storageContainer": "artists-images",
+            "referenceKeyName": null,
+            "generatedKeyName": "artists-imagesKey",
+            "source": "/document/normalized_images/*",
+            "sourceContext": null,
+            "inputs": []
+          }
+        ]
+      },
+      {
+        "tables": [
+          {
+            "tableName": "keyphrases",
+            "referenceKeyName": null,
+            "generatedKeyName": "keyphrase_id",
+            "source": "/document/knowledge_projection/key_phrases/*",
+            "sourceContext": null,
+            "inputs": []
+          }
+        ],
+        "objects": [],
+        "files": []
+      }
+    ],
+    "parameters": {
+      "synthesizeGeneratedKeyName": true
+    }
+  },
+  "encryptionKey": null
+}
