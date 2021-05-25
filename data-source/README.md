@@ -1,4 +1,4 @@
-# Sample PDF files to build the demo-index in the Search Service.
+# Sample PDF files to build the demo index in the Search Service.
 
 ## Data provided by Discogs:
 
