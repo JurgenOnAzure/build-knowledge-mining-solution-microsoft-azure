@@ -30,30 +30,30 @@ This folder contains the source code for the Azure Function that is used in a cu
 
 ## References and documentation
 
-### Custom Web API skill in an Azure Cognitive Search enrichment pipeline (payload format):
+#### Custom Web API skill in an Azure Cognitive Search enrichment pipeline (payload format):
 
 https://docs.microsoft.com/en-us/azure/search/cognitive-search-custom-skill-web-api
 
-### Service limits in Azure Cognitive Search:
+#### Service limits in Azure Cognitive Search:
 
 https://docs.microsoft.com/en-us/azure/search/search-limits-quotas-capacity
 
-### Azure Cognitive Search Service REST API:
+#### Azure Cognitive Search Service REST API:
 
 https://docs.microsoft.com/en-us/rest/api/searchservice
 
-### Search Documents (Azure Cognitive Search REST API), with examples:
+#### Search Documents (Azure Cognitive Search REST API), with examples:
 
 https://docs.microsoft.com/en-us/rest/api/searchservice/search-documents
 
-### Simple query syntax in Azure Cognitive Search:
+#### Simple query syntax in Azure Cognitive Search:
 
 https://docs.microsoft.com/en-us/azure/search/query-simple-syntax
 
-### Full Lucene query syntax in Azure Cognitive Search:
+#### Full Lucene query syntax in Azure Cognitive Search:
 
 https://docs.microsoft.com/en-us/azure/search/query-lucene-syntax
 
-### OData language overview for $filter, $orderby, and $select in Azure Cognitive Search:
+#### OData language overview for $filter, $orderby, and $select in Azure Cognitive Search:
 
 https://docs.microsoft.com/en-us/azure/search/query-odata-filter-orderby-syntax
