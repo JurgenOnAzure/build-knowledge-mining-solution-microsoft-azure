@@ -1,0 +1,996 @@
+{
+	"info": {
+		"_postman_id": "5d6850fb-c27f-47f2-9ad9-89fafdfddd06",
+		"name": "Azure Cognitive Search",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Document",
+			"item": [
+				{
+					"name": "Search 1",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{query-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexes/artists-index/docs?api-version={{api-version}}&$count=true&search=\"rock guitarist\"",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexes",
+								"artists-index",
+								"docs"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								},
+								{
+									"key": "$count",
+									"value": "true"
+								},
+								{
+									"key": "search",
+									"value": "\"rock guitarist\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search 2",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{query-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexes/artists-index/docs?api-version={{api-version}}&$count=true&$filter=locations/any(g: search.in(g, 'London, Chicago'))&$select=content,locations",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexes",
+								"artists-index",
+								"docs"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								},
+								{
+									"key": "$count",
+									"value": "true"
+								},
+								{
+									"key": "$filter",
+									"value": "locations/any(g: search.in(g, 'London, Chicago'))"
+								},
+								{
+									"key": "$select",
+									"value": "content,locations"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count documents",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{query-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexes/artists-index/docs/$count?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexes",
+								"artists-index",
+								"docs",
+								"$count"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autocomplete 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{query-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n  \"suggesterName\": \"demosuggester\",\r\n  \"search\": \"New Y\",\r\n  \"top\": 3\r\n}"
+						},
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexes/artists-index/docs/autocomplete?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexes",
+								"artists-index",
+								"docs",
+								"autocomplete"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Autocomplete 2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{query-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n  \"suggesterName\": \"demosuggester\",\r\n  \"search\": \"Charlie P\",\r\n  \"searchFields\": \"people\"\r\n}"
+						},
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexes/artists-index/docs/autocomplete?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexes",
+								"artists-index",
+								"docs",
+								"autocomplete"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Suggest 1",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{query-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n  \"suggesterName\": \"demosuggester\",\r\n  \"search\": \"Los\"\r\n}"
+						},
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexes/artists-index/docs/suggest?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexes",
+								"artists-index",
+								"docs",
+								"suggest"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Suggest 2",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{query-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{  \r\n  \"suggesterName\": \"demosuggester\",\r\n  \"search\": \"Michel\",\r\n  \"searchFields\": \"people\",\r\n  \"fuzzy\": true\r\n}"
+						},
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexes/artists-index/docs/suggest?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexes",
+								"artists-index",
+								"docs",
+								"suggest"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Index",
+			"item": [
+				{
+					"name": "Get index statistics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{admin-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexes/artists-index/stats?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexes",
+								"artists-index",
+								"stats"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List indexes",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{admin-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexes?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexes"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create index",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{admin-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"index-from-api\",\r\n    \"fields\": [\r\n        {\r\n            \"name\": \"id\",\r\n            \"type\": \"Edm.String\",\r\n            \"searchable\": true,\r\n            \"filterable\": true,\r\n            \"retrievable\": true,\r\n            \"sortable\": true,\r\n            \"facetable\": false,\r\n            \"key\": true,\r\n            \"indexAnalyzer\": null,\r\n            \"searchAnalyzer\": null,\r\n            \"analyzer\": \"standard.lucene\",\r\n            \"normalizer\": null,\r\n            \"synonymMaps\": []\r\n        },\r\n        {\r\n            \"name\": \"text\",\r\n            \"type\": \"Edm.String\",\r\n            \"searchable\": true,\r\n            \"filterable\": false,\r\n            \"retrievable\": true,\r\n            \"sortable\": false,\r\n            \"facetable\": false,\r\n            \"key\": false,\r\n            \"indexAnalyzer\": null,\r\n            \"searchAnalyzer\": null,\r\n            \"analyzer\": \"standard.lucene\",\r\n            \"normalizer\": null,\r\n            \"synonymMaps\": []\r\n        },\r\n        {\r\n            \"name\": \"created\",\r\n            \"type\": \"Edm.DateTimeOffset\",\r\n            \"searchable\": false,\r\n            \"filterable\": false,\r\n            \"retrievable\": true,\r\n            \"sortable\": true,\r\n            \"facetable\": false,\r\n            \"key\": false,\r\n            \"indexAnalyzer\": null,\r\n            \"searchAnalyzer\": null,\r\n            \"analyzer\": null,\r\n            \"normalizer\": null,\r\n            \"synonymMaps\": []\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexes?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexes"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update index",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{admin-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fields\": [\r\n        {\r\n            \"name\": \"id\",\r\n            \"type\": \"Edm.String\",\r\n            \"searchable\": true,\r\n            \"filterable\": true,\r\n            \"retrievable\": true,\r\n            \"sortable\": true,\r\n            \"facetable\": false,\r\n            \"key\": true,\r\n            \"indexAnalyzer\": null,\r\n            \"searchAnalyzer\": null,\r\n            \"analyzer\": \"standard.lucene\",\r\n            \"normalizer\": null,\r\n            \"synonymMaps\": []\r\n        },\r\n        {\r\n            \"name\": \"text\",\r\n            \"type\": \"Edm.String\",\r\n            \"searchable\": true,\r\n            \"filterable\": false,\r\n            \"retrievable\": false,\r\n            \"sortable\": false,\r\n            \"facetable\": false,\r\n            \"key\": false,\r\n            \"indexAnalyzer\": null,\r\n            \"searchAnalyzer\": null,\r\n            \"analyzer\": \"standard.lucene\",\r\n            \"normalizer\": null,\r\n            \"synonymMaps\": []\r\n        },\r\n        {\r\n            \"name\": \"created\",\r\n            \"type\": \"Edm.DateTimeOffset\",\r\n            \"searchable\": false,\r\n            \"filterable\": false,\r\n            \"retrievable\": true,\r\n            \"sortable\": true,\r\n            \"facetable\": false,\r\n            \"key\": false,\r\n            \"indexAnalyzer\": null,\r\n            \"searchAnalyzer\": null,\r\n            \"analyzer\": null,\r\n            \"normalizer\": null,\r\n            \"synonymMaps\": []\r\n        }\r\n    ]\r\n}"
+						},
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexes/index-from-api?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexes",
+								"index-from-api"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete index",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{admin-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexes/index-from-api?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexes",
+								"index-from-api"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Indexer",
+			"item": [
+				{
+					"name": "List indexers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{admin-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexers?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexers"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reset indexer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{admin-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexers/artists-indexer/reset?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexers",
+								"artists-indexer",
+								"reset"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Run indexer",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{admin-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexers/artists-indexer/run?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexers",
+								"artists-indexer",
+								"run"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get indexer status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{admin-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/indexers/artists-indexer/status?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"indexers",
+								"artists-indexer",
+								"status"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Skillset",
+			"item": [
+				{
+					"name": "List skillsets",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{admin-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/skillsets?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"skillsets"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Data sources",
+			"item": [
+				{
+					"name": "List data sources",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{admin-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/datasources?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"datasources"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Synonym maps",
+			"item": [
+				{
+					"name": "Create synonym map",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{admin-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \r\n  \"name\" : \"locations-synonymmap\",  \r\n  \"format\" : \"solr\",  \r\n  \"synonyms\" : \"England, UK, United Kingdom, Britain\\nTexas, TX\"\r\n}"
+						},
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/synonymmaps?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"synonymmaps"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List synonym maps",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-key",
+								"value": "{{admin-api-key}}",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "",
+								"value": "",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://{{search-service-name}}.search.windows.net/synonymmaps?api-version={{api-version}}",
+							"protocol": "https",
+							"host": [
+								"{{search-service-name}}",
+								"search",
+								"windows",
+								"net"
+							],
+							"path": [
+								"synonymmaps"
+							],
+							"query": [
+								{
+									"key": "api-version",
+									"value": "{{api-version}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
