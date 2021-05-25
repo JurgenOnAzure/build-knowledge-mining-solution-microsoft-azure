@@ -1,6 +1,6 @@
-# Sample queries for the Search explorer
+# Sample queries that you can use in the Search explorer for the demo index in the course
 
-Below are some sample queries that you can use in the Search explorer for the demo index in the course.
+![enter image description here](/search-explorer-samples/readme-search-explorer-screenshot.png)
 
 <table>
   <tr>
