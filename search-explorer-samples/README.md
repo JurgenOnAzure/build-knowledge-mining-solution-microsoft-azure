@@ -41,7 +41,7 @@
   </tr>
   <tr>
     <td>&$count=true&search=rock&facet=locations</td>
-    <td>Get documents where <b>rock</b> is in one or more of the fields that are marked as <b>searchable</b>, </br> and get the hit count per <b>location</b> (which is a field that is marked as <b>facetable</b>), </br> and include the number of matching documents in the result.</td>
+    <td>Get documents where <b>rock</b> is in one or more of the fields that are marked as <b>searchable</b>, </br> and get the hit count per location (<b>locations</b> is a field that is marked as <b>facetable</b>), </br> and include the number of matching documents in the result.</td>
   </tr>
   <tr>
     <td>&$count=true&search=jazz&$skip=5&$top=2&$select=content</td>
